@@ -1,14 +1,15 @@
 from pyspark.sql import SparkSession
 
+
 def process_data():
 
-    spark = SparkSession.builder.appName("Joining Datasets").getOrCreate()
+    spark = SparkSession.builder.appName("GCPDataprocJob").getOrCreate()
 
     # Configure your GCP bucket and paths
     bucket = "landing-zone-1"
     emp_data_path = f"gs://{bucket}/employee.csv"
     dept_data_path = f"gs://{bucket}/department.csv"
-    output_path = f"gs://{bucket}/joined_output"
+    output_path = f"gs://{bucket}/joined_output.csv"
 
     # Read datasets
     employee = spark.read.csv(emp_data_path, header=True, inferSchema=True)
@@ -24,6 +25,7 @@ def process_data():
     joined_data.write.csv(output_path, header=True)
 
     spark.stop()
+
 
 if __name__ == "__main__":
     process_data()
