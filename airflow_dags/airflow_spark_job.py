@@ -29,7 +29,8 @@ dag = DAG("gcp_dataproc_spark_job",
 
 # Configure cluster parameters
 CLUSTER_NAME = 'spark-cluster-project-1'
-PROJECT_ID = 'jacky-demo'       # this is project ID, not project NAME
+# this is project ID, not project NAME. You may need to change this
+PROJECT_ID = 'jacky-demo'
 REGION = 'us-east1'
 
 # configuration for cluster creation
